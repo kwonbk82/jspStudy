@@ -10,9 +10,9 @@
 </head>
 <body>
 	<%
-		Map<String,Person> maps = new HashMap<>();
+		//Map<String,Person> maps = new HashMap<>();
 	
-		maps.put("p1",new Person("김그린",22));
+//		maps.put("p1",new Person("김그린",22));
 	%>
 </body>
 </html>
