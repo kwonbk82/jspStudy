@@ -32,6 +32,16 @@ public class JDBC_connect {
 		try {
 			Class.forName(driver);
 			con = DriverManager.getConnection(url, id, pw);
+			
+			while(rs.next()){
+				String id1 = rs.getString(1);
+				String pw1 = rs.getString(2);
+				String name = rs.getString("name");
+				Date regidate = rs.getDate("regidate");
+				
+				out.println(String.format("%s %s %s %s",id1,pw1,name,regidate)+"<br>");
+			}
+			jdbc.close();
 			System.out.println("DB 연결 성공");
 		}catch(Exception e) {
 			e.printStackTrace();
