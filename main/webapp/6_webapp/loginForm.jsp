@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<jsp:include page="../7_board1/link.jsp"></jsp:include>
 	<h2>login page</h2>
 	
 	
