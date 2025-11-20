@@ -14,13 +14,25 @@
 <head>
 <meta charset="UTF-8">
 <title>회원제 게시판</title>
-
+<script>
+	function deletePost(){
+		let confirmed = confirm("ㄹㅇ 삭제함?");
+		if(confirmed){
+			let form = document.writeFrm;
+			from.method="post";
+			form.action="deleteProcess.jsp";
+			form.submit();
+		}
+	}
+</script>
 </head>
 <body>
 <%@ include file="../7_board1/link.jsp" %>
 
 <h2>회원제 게시판 - 상세 보기(View)</h2>
 <form name="writeFrm">
+	<input type="hidden" name="num" value="<%=num %>"/>
+
     <table border="1" width="90%">
         <tr>
             <td>번호</td>
@@ -48,7 +60,7 @@
             	
             
             %>
-                <button type="button">수정하기</button>
+                <button type="button" onclick="location.href='edit.jsp?num=<%=dto.getNum() %>';">수정하기</button>
                 <button type="button">삭제하기</button> 
                 
               <%} %>
