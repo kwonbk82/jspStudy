@@ -1,0 +1,78 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="UTF-8">
+<title>파일 첨부형 게시판</title>
+<!-- 1. <a> 태그를 사용하면 기본적으로 생기는 밑줄을 제거 -->
+<style>a{text-decoration:none;}</style>
+</head>
+<body>
+    <h2>파일 첨부형 게시판 - 목록 보기(List)</h2>
+
+    <form method="get">  
+    <table border="1" width="90%">
+    <tr>
+        <td align="center">
+            <select name="searchField">
+                <option value="title">제목</option>
+                <option value="content">내용</option>
+            </select>
+            <input type="text" name="searchWord" />
+            <input type="submit" value="검색하기" />
+        </td>
+    </tr>
+    </table>
+    </form>
+
+    <table border="1" width="90%">
+        <tr>
+            <th width="10%">번호</th>
+            <th width="*">제목</th>
+            <th width="15%">작성자</th>
+            <th width="10%">조회수</th>
+            <th width="15%">작성일</th>
+            <th width="8%">첨부</th>
+        </tr>
+		<c:choose>
+			<c:when test="${empty boardLists }">
+		        <tr>
+		            <td colspan="6" align="center">
+		                등록된 게시물이 없습니다^^*
+		            </td>
+		        </tr>
+		    </c:when>
+			<c:otherwise>
+				<c:forEach items="${boardLists }" var="row">
+			        <tr align="center">
+					    <td>${row.idx }</td>    <!-- 글번호 -->
+				            <td align="left">  
+				                <a href="">${row.title }</a> 
+				            </td> 
+				            <td>${row.name }</td>  <!-- 작성자 -->
+				            <td>${row.visitcount }</td>  <!-- 조회수 -->
+				            <td>${row.postdate }</td> 
+				            <td>  <!-- 첨부 파일 -->
+				            <c:if test="${not empty row.ofile }"> <!-- 작성일 -->
+				           	<a href="">[Down]</a>
+				            </c:if>
+				            </td>
+				        </tr>
+				        
+			    </c:forEach>
+	        </c:otherwise>
+	     </c:choose>
+    </table>
+
+    <table border="1" width="90%">
+        <tr align="right">
+            <td width="100">
+		<button type="button" onclick="location.href='../mvcboard/write.do'">글쓰기</button>
+	    </td>
+        </tr>
+    </table>
+</body>
+</html>

@@ -12,18 +12,22 @@ public class JDBC_connect {
 	
 	public JDBC_connect() {
 		try {
-			Class.forName("com.mysql.cl.jdbc.Driver");
+			Class.forName("com.mysql.cj.jdbc.Driver");
 			
 			//프로토콜://ip주소:포트번호/db명?옵션
-			String url = "jdbc:mysql://localhost:3306/studyjsp?"+"serverTimezone=UTC&useUnicode=true"+"&characterEncoding=utf8";
-			String id = "root";
-			String pw = "1234";
+			//옵션 : serverTimezone=UTC -> 표준시간대로 설정
+			//useUnicode=true, characterEncoding=utf8 -> 한글깨짐 방지
+			String url = "jdbc:mysql://localhost:3306/studyjsp?"
+									+ "serverTimezone=UTC&useUnicode=true"
+									+ "&characterEncoding=utf8";
+			String id="root";
+			String pwd = "1234";
 			
-			con = DriverManager.getConnection(url, id, pw);
-			System.out.println("DB 연결 성공");
+			con = DriverManager.getConnection(url, id, pwd);
 			
-		
-		}catch(Exception e) {
+			System.out.println("DB 연결 성공(기본 생성자)");
+			
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		}

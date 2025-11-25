@@ -12,39 +12,120 @@
     <welcome-file>default.xhtml</welcome-file>
   </welcome-file-list>
   
-   <context-param>
+  <context-param>
   	<param-name>INIT_PARAM</param-name>
   	<param-value>web.xml에 저장한 초기화 매개변수</param-value>
-  </context-param> 
+  </context-param>
   
   <context-param>
-		<param-name>MySqlDriver</param-name>
-		<param-value>com.mysql.cl.jdbc.Driver</param-value>
-	</context-param>
-	<context-param>
-		<param-name>MySqlURL</param-name>
-		<param-value>jdbc:mysql://localhost:3306/studyjsp?serverTimezone=UTC&amp;useUnicode=true&amp;characterEncoding=utf8</param-value>
-	</context-param>
-	<context-param>
-		<param-name>MySqlId</param-name>
-		<param-value>root</param-value>
-	</context-param>
-	<context-param>
-		<param-name>MySqlPw</param-name>
-		<param-value>1234</param-value>
-	</context-param>
-	
-	<!-- 세션 유지시간 설정 -->
-	<session-config>
-		<session-timeout>20</session-timeout>
-	</session-config>
-	
-	<servlet>
-		<servlet-name>LoginServlet</servlet-name>
-		<servlet-class>servlet.LoginServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>LoginServlet</servlet-name>
-		<url-pattern>9_servlet/login</url-pattern>
-	</servlet-mapping>
-</web-app> 
+  	<param-name>MySqlDriver</param-name>
+  	<param-value>com.mysql.cj.jdbc.Driver</param-value>
+  </context-param>
+  
+  <context-param>
+  	<param-name>MySqlURL</param-name>
+  	<param-value>jdbc:mysql://localhost:3306/studyjsp?serverTimezone=UTC&amp;useUnicode=true&amp;characterEncoding=utf8</param-value>
+  </context-param>
+  
+  <context-param>
+  	<param-name>MySqlId</param-name>
+  	<param-value>root</param-value>
+  </context-param>
+  
+  <context-param>
+  	<param-name>MySqlPwd</param-name>
+  	<param-value>1234</param-value>
+  </context-param>
+  
+  <!-- 세션 유지시간 설정(분단위 설정) -->
+  <session-config>
+  	<session-timeout>20</session-timeout>
+  </session-config>
+  
+  <!-- 서블릿 등록 -->
+  <servlet>
+  	<servlet-name>LoginServlet</servlet-name>
+  	<servlet-class>servlet.LoginServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>LoginServlet</servlet-name>
+  	<url-pattern>/9_servlet/login</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>HelloServlet</servlet-name>
+  	<servlet-class>servlet.HelloServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>HelloServlet</servlet-name>
+  	<url-pattern>/9_servlet/HelloServlet.do</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>DirectServlet</servlet-name>
+  	<servlet-class>servlet.DirectServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>DirectServlet</servlet-name>
+  	<url-pattern>/9_servlet/DirectServlet.do</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>MemberAuth</servlet-name>
+  	<servlet-class>servlet.MemberAuth</servlet-class>
+  	<init-param>
+  		<param-name>admin_id</param-name>
+  		<param-value>admin</param-value>
+  	</init-param>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>MemberAuth</servlet-name>
+  	<url-pattern>/9_servlet/MemberAuth.mvc</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>MVCBoardList</servlet-name>
+  	<servlet-class>mvcboard.ListController</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>MVCBoardList</servlet-name>
+  	<url-pattern>/mvcboard/list.do</url-pattern>
+  </servlet-mapping>
+  
+  
+  <servlet>
+  	<servlet-name>MVCBoardWrite</servlet-name>
+  	<servlet-class>mvcboard.WriteController</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>MVCBoardWrite</servlet-name>
+  	<url-pattern>/mvcboard/write.do</url-pattern>
+  </servlet-mapping>
+  
+  <context-param>
+  	<param-name>maxPostSize</param-name>
+  	<param-value>1024000</param-value>
+  </context-param>
+  
+  
+ 
+</web-app>
+
+
+
+
+
+
+
+
+
+
+
+
+
