@@ -38,7 +38,7 @@ public class JSFunction {
 			// TODO: handle exception
 		}
 	}
-		public static void alertLocation(HttpServletResponse resp,String msg) {
+		public static void alertBack(HttpServletResponse resp,String msg) {
 			try {
 				resp.setContentType("text/html;charset=UTF-8");
 				PrintWriter writer = resp.getWriter();

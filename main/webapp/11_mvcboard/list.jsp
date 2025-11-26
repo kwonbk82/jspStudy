@@ -50,14 +50,14 @@
 			        <tr align="center">
 					    <td>${row.idx }</td>    <!-- 글번호 -->
 				            <td align="left">  
-				                <a href="">${row.title }</a> 
+				                <a href="../mvcboard/view.do?idx=${row.idx }">${row.title }</a> 
 				            </td> 
 				            <td>${row.name }</td>  <!-- 작성자 -->
 				            <td>${row.visitcount }</td>  <!-- 조회수 -->
 				            <td>${row.postdate }</td> 
 				            <td>  <!-- 첨부 파일 -->
 				            <c:if test="${not empty row.ofile }"> <!-- 작성일 -->
-				           	<a href="">[Down]</a>
+				           	<a href="../mvcboard/download.do?ofile=${row.ofile }&sfile=${row.sfile}&idx=${row.idx}">[Down]</a>
 				            </c:if>
 				            </td>
 				        </tr>
